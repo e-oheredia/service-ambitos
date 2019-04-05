@@ -43,16 +43,11 @@ public class SubAmbitoService implements ISubAmbitoService {
 	}
 
 	@Override
-	public Iterable<SubAmbito> listarActivos() {
-		Iterable<SubAmbito> subambitos = subambitoDao.findAll();
+	public Iterable<SubAmbito> listarSubAmbitosActivosByAmbitoId(Long id) {
+		Iterable<SubAmbito> subambitos = subambitoDao.listarSubAmbitoByAmbitoId(id);
 		List<SubAmbito> subambitolst = StreamSupport.stream(subambitos.spliterator(), false).collect(Collectors.toList());
 		subambitolst.removeIf(subambito -> !subambito.isActivo());
 		return subambitolst;
-	}
-
-	@Override
-	public Iterable<SubAmbito> listarSubAmbitosByAmbitoId(Long id) {
-		return subambitoDao.listarSubAmbitoByAmbitoId(id);
 	}
 
 }

@@ -26,7 +26,7 @@ public class SubAmbito {
 	@Column(nullable=false)
 	private boolean activo;
 	
-	@ManyToOne(fetch = FetchType.EAGER, optional=false)	
+	@ManyToOne(optional=false)	
 	@JoinColumn(name="ambito_id")
 	private Ambito ambito;
 	

@@ -30,12 +30,6 @@ public class SubAmbitoController {
 		return new ResponseEntity<Iterable<SubAmbito>>(subambitoService.listarAll(), HttpStatus.OK);
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<SubAmbito> listarById(@PathVariable Long id){
-		SubAmbito subambito = subambitoService.listarById(id);
-		return new ResponseEntity<SubAmbito>(subambito, subambito == null ? HttpStatus.NOT_FOUND: HttpStatus.OK);
-	}
-	
 	@PostMapping
 	public ResponseEntity<SubAmbito> guardar(@RequestBody String subambito) {
 		
@@ -48,11 +42,6 @@ public class SubAmbitoController {
 		}
 		subambitoBD.setActivo(true);
 		return new ResponseEntity<SubAmbito>(subambitoService.guardar(subambitoBD), HttpStatus.OK);
-	}
-	
-	@GetMapping("/activos")
-	public ResponseEntity<Iterable<SubAmbito>> listarActivos() {
-		return new ResponseEntity<Iterable<SubAmbito>>(subambitoService.listarActivos(), HttpStatus.OK);
 	}
 	
 	@PutMapping("/{id}")

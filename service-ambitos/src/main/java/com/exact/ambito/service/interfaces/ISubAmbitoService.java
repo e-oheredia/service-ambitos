@@ -9,6 +9,6 @@ public interface ISubAmbitoService {
 	public Iterable<SubAmbito> listarAll();
 	SubAmbito listarById(Long id);
 	SubAmbito guardar(SubAmbito subambito);
-	public Iterable<SubAmbito> listarActivos();
-	public Iterable<SubAmbito> listarSubAmbitosByAmbitoId(Long id);
+	public Iterable<SubAmbito> listarSubAmbitosActivosByAmbitoId(Long id);
+	
 }

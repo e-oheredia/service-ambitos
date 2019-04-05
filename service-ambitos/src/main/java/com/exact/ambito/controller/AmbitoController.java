@@ -36,8 +36,8 @@ public class AmbitoController {
 	}
 	
 	@GetMapping("/{id}/subambitos")
-	public ResponseEntity<Iterable<SubAmbito>> listarBySubAmbitoId(@PathVariable Long id){
-		return new ResponseEntity<Iterable<SubAmbito>>(subambitoService.listarSubAmbitosByAmbitoId(id) , HttpStatus.OK);
+	public ResponseEntity<Iterable<SubAmbito>> listarSubAmbitosActivosByAmbitoId(@PathVariable Long id){
+		return new ResponseEntity<Iterable<SubAmbito>>(subambitoService.listarSubAmbitosActivosByAmbitoId(id) , HttpStatus.OK);
 	}
 	
 	
