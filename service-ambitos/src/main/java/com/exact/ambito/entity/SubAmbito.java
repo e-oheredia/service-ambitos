@@ -21,7 +21,7 @@ public class SubAmbito {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="sub_ambito_id")
 	private Long id;
-	@Column(nullable=false)
+	@Column(nullable=false, unique=true)
 	private String nombre;
 	@Column(nullable=false)
 	private boolean activo;
