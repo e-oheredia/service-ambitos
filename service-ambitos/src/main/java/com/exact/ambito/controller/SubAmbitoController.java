@@ -1,6 +1,5 @@
 package com.exact.ambito.controller;
 
-import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,14 +33,14 @@ public class SubAmbitoController {
 	public ResponseEntity<SubAmbito> guardar(@RequestBody String subambito) {
 		
 		ObjectMapper mapper = new ObjectMapper();
-		SubAmbito subambitoBD=null;
+		SubAmbito subambitoBD= new SubAmbito();
 		try {
 			subambitoBD = mapper.readValue(subambito, SubAmbito.class);
-		} catch (IOException e) {
-			e.printStackTrace();
+			subambitoBD.setActivo(true);
+			return new ResponseEntity<SubAmbito>(subambitoService.guardar(subambitoBD) , HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<SubAmbito> (HttpStatus.BAD_REQUEST);
 		}
-		subambitoBD.setActivo(true);
-		return new ResponseEntity<SubAmbito>(subambitoService.guardar(subambitoBD), HttpStatus.OK);
 	}
 	
 	@PutMapping("/{id}")
@@ -51,11 +50,11 @@ public class SubAmbitoController {
 		SubAmbito subambitoBD=null;
 		try {
 			subambitoBD = mapper.readValue(subambito, SubAmbito.class);
-		} catch (IOException e) {
-			e.printStackTrace();
+			subambitoBD.setId(id);
+			return new ResponseEntity<SubAmbito>(subambitoService.guardar(subambitoBD) , HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<SubAmbito> (HttpStatus.BAD_REQUEST);
 		}
-		subambitoBD.setId(id);
-		return new ResponseEntity<SubAmbito>(subambitoService.guardar(subambitoBD), HttpStatus.OK);
 	}
 	
 }
